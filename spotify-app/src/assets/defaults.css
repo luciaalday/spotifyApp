@@ -5,7 +5,8 @@ html, body {
 }
 
 :root {
-    --background-main: #aa2222;
-    --background-sidenav: #404040;
-    --background-nav: #909090;
+    --background-main: #ffffff;
+    --background-sidenav: #a3c29f;
+    --background-nav: #09ab44;
+    --shadow: #104020;
 }
