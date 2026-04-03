@@ -1,0 +1,11 @@
+@charset 'UTF-8';
+
+html, body {
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+
+:root {
+    --background-main: #aa2222;
+    --background-sidenav: #404040;
+    --background-nav: #909090;
+}
