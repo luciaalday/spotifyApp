@@ -2,37 +2,48 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { loginWithSpotify, exchangeCodeForToken } from '../spotify/auth';
 import { getCurrentUser } from '../spotify/api';
+import CurrentTrack from '../components/CurrentTrack';
 
 export default function Navside({ isOpen }) {
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
+    const [authHandled, setAuthHandled] = useState(false);
 
     useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const code = params.get('code');
+        if (authHandled) return;
 
-        if (code) {
-            exchangeCodeForToken(code).then(async () => {
-                window.history.replaceState({}, '', '/');
-                const userData = await getCurrentUser();
-                setUser(userData);
-                setLoggedIn(true);
-            });
-        } else if (localStorage.getItem('access_token')) {
-            getCurrentUser().then((userData) => {
-                setUser(userData);
-                setLoggedIn(true);
-            });
-        }
-    }, []);
+        const handleAuth = async () => {
+            setAuthHandled(true);
+            const params = new URLSearchParams(window.location.search);
+            const code = params.get('code');
+            const existingToken = localStorage.getItem('access_token');
 
-    const handleLogin = () => {
-        loginWithSpotify();
-    };
+            try {
+                // Exchange code for token (once)
+                if (code && !existingToken) {
+                    const data = await exchangeCodeForToken(code);
+                    window.history.replaceState({}, '', '/');
+                    console.log("Logged in successfully:", data.access_token);
+                }
+
+                // Fetch user & current track
+                if (localStorage.getItem('access_token')) {
+                    const userData = await getCurrentUser();
+                    setUser(userData);
+                    setLoggedIn(true);
+                }
+            } catch (err) {
+                console.error("Auth flow error:", err);
+            }
+        };
+
+        handleAuth();
+    }, [authHandled]);
+
+    const handleLogin = () => loginWithSpotify();
 
     const handleLogout = () => {
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('code_verifier');
+        localStorage.clear();
         setLoggedIn(false);
         setUser(null);
     };
@@ -49,23 +60,23 @@ export default function Navside({ isOpen }) {
                         />
                     )}
                     <h1>{user?.display_name || 'User'}</h1>
+
                     <div className='menu-options'>
-                        <hr></hr>
+                        <hr />
                         <Link className='menu-item' to="/top-tracks">Top Tracks</Link>
-                        <hr></hr>
+                        <hr />
                         <Link className='menu-item' to="/top-artists">Top Artists</Link>
-                        <hr></hr>
-                        <Link className='menu-item' to="/recently-played">Recently Played</Link>
-                        <hr></hr>
+                        <hr />
                     </div>
+
+                    <CurrentTrack />
+                    <hr style={{ margin: '0 auto 20px', width: '60%' }} />
                     <button className='login' onClick={handleLogout}>Sign out</button>
                 </div>
             ) : (
                 <div className='side-nav flex-col'>
                     <h1>View stats</h1>
-                    <button className='login' onClick={handleLogin}>
-                        Sign in with Spotify
-                    </button>
+                    <button className='login' onClick={handleLogin}>Sign in with Spotify</button>
                 </div>
             )}
         </nav>

@@ -1,5 +1,9 @@
 @import './defaults.css';
 
+button {
+    transition: 0.2s ease;
+}
+
 .top-nav {
     position: fixed;
     top: 0;
@@ -104,4 +108,32 @@ button.login:hover {
     .side-nav-container.open {
         width: calc(100vw - 40px);
     }
+}
+.current-track {
+    margin: 20px 0;
+}
+.current-track h1 {
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 0;
+    padding: 0;
+}
+.current-track h2 {
+    font-size: 0.9em;
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    font-style: italic;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+
+}
+.curr-track-art:hover {
+    animation: spin 8s linear infinite;
+}
+.track-art:hover {
+    animation: spin 1s ease-out 1;
 }

@@ -1,5 +1,4 @@
 // src/spotify/api.js
-
 const BASE = "https://api.spotify.com/v1";
 
 function getHeaders() {
@@ -10,18 +9,14 @@ function getHeaders() {
     };
 }
 
-// User 
-
 export async function getCurrentUser() {
     const res = await fetch(`${BASE}/me`, { headers: getHeaders() });
     return res.json();
 }
 
-// Player 
-
 export async function getCurrentlyPlaying() {
     const res = await fetch(`${BASE}/me/player/currently-playing`, { headers: getHeaders() });
-    if (res.status === 204) return null; // nothing playing
+    if (res.status === 204) return null;
     return res.json();
 }
 

@@ -11,16 +11,15 @@ button {
 
 .flex-row {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     align-items: center;
+    margin: 2px;
 }
 .flex-col {
     display: flex;
     align-items:center;
-    gap: 10px;
     flex-direction: column;
 }
-
 .icon {
     background-color: transparent;
 }
@@ -29,4 +28,26 @@ button {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+.time-range-options button {
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.time-range-options button:hover {
+    background-color: var(--background-sidenav);
+}
+.limit-input {
+    all: unset;
+    text-align: center;
+}
+@keyframes glow {
+    from { text-shadow: 0 0 0 var(--text-glow); }
+    to { text-shadow: 0 0 50px var(--text-glow); }
+}
+.text-glow {
+    transition: 1s ease-out;
+}
+.text-glow:hover {
+    animation: glow 2s ease-in infinite alternate;
 }

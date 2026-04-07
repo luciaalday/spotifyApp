@@ -9,7 +9,6 @@ import Footer from './navigation/Footer';
 import Login from './pages/Login';
 import TopTracks from './pages/TopTracks';
 import TopArtists from './pages/TopArtists';
-import RecentlyPlayed from './pages/RecentlyPlayed';
 
 export default function App() {
     const [isOpen, setOpen] = useState(false);
@@ -25,7 +24,6 @@ export default function App() {
                             <Route path="/" element={<Login />} />
                             <Route path="/top-tracks" element={<TopTracks />} />
                             <Route path="/top-artists" element={<TopArtists />} />
-                            <Route path="/recently-played" element={<RecentlyPlayed />} />
                             <Route path="*" element={<Error code={404} />} />
                         </Routes>
                         <Footer />
