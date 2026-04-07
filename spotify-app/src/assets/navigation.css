@@ -88,7 +88,6 @@ button.login {
     padding: 5px 20px;
     border-radius: 50px;
     background-color: var(--dark-green);
-    transition: 0.2s ease;
     margin-bottom: 10px;
 }
 
