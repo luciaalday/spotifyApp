@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     height: 60px;
-    background-color: var(--background-nav);
+    background-color: var(--spotify-green);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,6 +38,7 @@
     padding: 0;
     box-sizing: border-box;
     box-shadow: 0 0 10px var(--shadow);
+    overflow-y: scroll;
 }
 
 .side-nav h1 {
@@ -62,6 +63,35 @@
     background-color: var(--background-main);
     min-height: calc(100vh - 60px);
     box-sizing: border-box;
+}
+
+.menu-options {
+    width: 90%;
+    text-align: center;
+}
+.menu-item {
+    text-decoration: none;
+    color: var(--shadow);
+    transition: 0.2s ease;
+}
+.menu-item:hover {
+    color: var(--dark-green);
+    text-shadow: 0 0 100px var(--pistachio);
+}
+button.login {
+    color: white;
+    border: 1px solid var(--shadow);
+    padding: 5px 20px;
+    border-radius: 50px;
+    background-color: var(--dark-green);
+    transition: 0.2s ease;
+    margin-bottom: 10px;
+}
+
+button.login:hover {
+    background-color: var(--spotify-green);
+    transform: scale(1.05);
+    color: black
 }
 
 @media (min-width: 768px) {

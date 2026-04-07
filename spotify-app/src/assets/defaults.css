@@ -1,12 +1,15 @@
 @charset 'UTF-8';
 
 html, body {
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
 }
 
 :root {
     --background-main: #ffffff;
-    --background-sidenav: #a3c29f;
-    --background-nav: #09ab44;
-    --shadow: #104020;
+    --background-sidenav: #c2dccc;
+    --shadow: #0c5e27;
+    --spotify-green: #1ed760;
+    --pistachio: #f5fff1;
+    --dark-green: #22af51;
+    --black: #121212;
 }

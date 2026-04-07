@@ -14,6 +14,12 @@ button {
     gap: 10px;
     align-items: center;
 }
+.flex-col {
+    display: flex;
+    align-items:center;
+    gap: 10px;
+    flex-direction: column;
+}
 
 .icon {
     background-color: transparent;
