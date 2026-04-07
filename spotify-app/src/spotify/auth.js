@@ -1,6 +1,6 @@
 // src/spotify/auth.js
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-const REDIRECT_URI = "http://spotify.luciaalday.com/callback";
+const REDIRECT_URI = "https://spotify.luciaalday.com/callback";
 // const REDIRECT_URI = "http://127.0.0.1:5173/callback";
 const SCOPES = "user-read-private user-read-email user-top-read user-read-currently-playing";
 
