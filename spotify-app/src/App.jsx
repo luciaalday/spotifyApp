@@ -24,6 +24,7 @@ export default function App() {
                             <Route path="/" element={<Login />} />
                             <Route path="/top-tracks" element={<TopTracks />} />
                             <Route path="/top-artists" element={<TopArtists />} />
+                            <Route path="/callback" element={<Login />} />
                             <Route path="*" element={<Error code={404} />} />
                         </Routes>
                         <Footer />
