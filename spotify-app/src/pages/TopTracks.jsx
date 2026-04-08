@@ -20,7 +20,7 @@ export default function TopTracks() {
 
 
     return (
-        <main>
+        <main className='main-content'>
             <h1>Top&nbsp;
                 <input className='limit-input'
                     type="number"

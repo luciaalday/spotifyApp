@@ -6,7 +6,7 @@ export default function Error({ code }) {
                     : 'An unexpected error occurred';
 
     return (
-        <main>
+        <main className="main-content">
             <h1>Error {code}</h1>
             <p>{message}</p>
         </main>

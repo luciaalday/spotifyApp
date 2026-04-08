@@ -1,7 +1,7 @@
 export default function Login() {
     return (
-        <div>
+        <main className="main-content">
             <p>login page</p>
-        </div>
+        </main>
     )
 }
