@@ -1,8 +1,8 @@
 // src/spotify/auth.js
 const CLIENT_ID = import.meta.env.VITE_SPOTIFY_CLIENT_ID;
-const REDIRECT_URI = 'https://spotify.luciaalday.com/callback';
+// const REDIRECT_URI = 'https://spotify.luciaalday.com/callback';
+const REDIRECT_URI = "http://127.0.0.1:5173/callback";
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${SCOPES}`;
-// const REDIRECT_URI = "http://127.0.0.1:5173/callback";
 const SCOPES = "user-read-private user-read-email user-top-read user-read-currently-playing";
 
 // Generate random string for PKCE code verifier
