@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getTopTracks } from '../spotify/api';
+import { IoDownload } from 'react-icons/io5';
 
 export default function TopTracks() {
     const [timeRange, setTimeRange] = useState("medium_term");
@@ -21,20 +22,28 @@ export default function TopTracks() {
 
     return (
         <main>
-            <h1>Top&nbsp;
-                <input className='limit-input'
-                    type="number"
-                    value={limit}
-                    onChange={(e) => setLimit(parseInt(e.target.value))}
-                    min="1"
-                    max="50"
-                />    
-                &nbsp;Tracks
-            </h1>
-            <div className="flex-row  time-range-options">
-                <button onClick={()=>setTimeRange("short_term")} >Last month</button>
-                <button onClick={()=>setTimeRange("medium_term")} >Last 6 months</button>
-                <button onClick={()=>setTimeRange("long_term")} >All time</button>
+            <div className="flex-row space-between">
+                <div>
+                <h1>Top&nbsp;
+                    <input className='limit-input'
+                        type="number"
+                        value={limit}
+                        onChange={(e) => setLimit(parseInt(e.target.value))}
+                        min="1"
+                        max="50"
+                    />    
+                    &nbsp;Tracks
+                </h1>
+                <div className="flex-row  time-range-options">
+                    <button onClick={()=>setTimeRange("short_term")} >Last month</button>
+                    <button onClick={()=>setTimeRange("medium_term")} >Last 6 months</button>
+                    <button onClick={()=>setTimeRange("long_term")} >All time</button>
+                </div>
+                </div>
+                <div className="flex-row">
+                    <h2>graph</h2>
+                    <button className='icon download'><IoDownload size={30} /></button>
+                </div>
             </div>
             <hr />
             <div>

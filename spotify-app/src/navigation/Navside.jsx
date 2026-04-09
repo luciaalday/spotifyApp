@@ -7,26 +7,21 @@ import CurrentTrack from '../components/CurrentTrack';
 export default function Navside({ isOpen }) {
     const [loggedIn, setLoggedIn] = useState(false);
     const [user, setUser] = useState(null);
-    const [authHandled, setAuthHandled] = useState(false);
 
     useEffect(() => {
-        if (authHandled) return;
-
         const handleAuth = async () => {
-            setAuthHandled(true);
             const params = new URLSearchParams(window.location.search);
             const code = params.get('code');
             const existingToken = localStorage.getItem('access_token');
 
             try {
-                // Exchange code for token (once)
                 if (code && !existingToken) {
-                    const data = await exchangeCodeForToken(code);
+                    // Remove code from URL immediately before any async work
                     window.history.replaceState({}, '', '/');
+                    const data = await exchangeCodeForToken(code);
                     console.log("Logged in successfully:", data.access_token);
                 }
 
-                // Fetch user & current track
                 if (localStorage.getItem('access_token')) {
                     const userData = await getCurrentUser();
                     setUser(userData);
@@ -38,7 +33,7 @@ export default function Navside({ isOpen }) {
         };
 
         handleAuth();
-    }, [authHandled]);
+    }, []);
 
     const handleLogin = () => loginWithSpotify();
 

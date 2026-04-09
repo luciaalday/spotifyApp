@@ -124,6 +124,13 @@ button.login:hover {
     font-weight: normal;
     font-style: italic;
 }
+.play-controls {
+    margin-top: 15px;
+}
+.play:hover {
+    color: var(--button-hover);
+    transform: scale(1.1);
+}
 
 @keyframes spin {
     from { transform: rotate(0deg); }
