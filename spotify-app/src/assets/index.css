@@ -30,6 +30,9 @@ button:active {
 .icon {
     background-color: transparent;
 }
+.icon:active {
+    transform: scale(0.9);
+}
 
 .App {
     display: flex;

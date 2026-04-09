@@ -1,0 +1,81 @@
+:root {
+    --main-building: #204010;
+    --lofi-text: #cbe970;
+    --upper-main: #1c3c11;
+    --lower-main: #566d56;
+    --upper-no-1: #0b4842;
+    --lower-no-1: #71a399;
+    --upper-no-2: #4f0b58;
+    --lower-no-2: #8a5884;
+    --upper-no-3: #9c4040;
+    --lower-no-3: #b07f7f;
+    --upper-no-4: #6b4007;
+    --lower-no-4: #8b7d5f;
+    --upper-no-5: #054254;
+    --lower-no-5: #5f818b;
+    --upper-no-6: #54052a;
+    --lower-no-6: #8b5f6b;
+}
+.img-container {
+    align-items: flex-end;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+}
+.lofi {
+    color: var(--lofi-text);
+    background: url('../img/dark-night-sky.jpg') no-repeat center / cover;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 0 15px var(--shadow);
+    border: 2px solid var(--lofi-text);
+}
+
+.main-building {
+    margin: 15px 0 0 0;
+    flex-shrink: 0;
+    padding: 10px;
+    background: linear-gradient(var(--upper-main), var(--lower-main));
+}
+.side-building {
+    width: 60px;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 10px;
+}
+.window {
+    background-color: #edd3a6;
+    min-height: 5px;
+    width: 100%;
+    animation-name: window-flicker;
+    animation-iteration-count: infinite;
+    margin: 10px 0;
+}
+h3 {
+     margin: 0;
+     padding: 0;
+}
+.ranks {
+    justify-content: space-between;
+}
+.lofi h1 {
+    text-align: center;
+    margin: 5px;
+}
+.no-1 { width: 50px; background: linear-gradient(var(--upper-no-1), var(--lower-no-1)); }
+.no-2 { width: 80px; background: linear-gradient(var(--upper-no-2), var(--lower-no-2)); }
+.no-3 { width: 70px; background: linear-gradient(var(--upper-no-3), var(--lower-no-3)); }
+.no-4 { width: 40px; background: linear-gradient(var(--upper-no-4), var(--lower-no-4)); }
+.no-5 { width: 100px; background: linear-gradient(var(--upper-no-5), var(--lower-no-5)); }
+.no-6 { width: 80px; background: linear-gradient(var(--upper-no-6), var(--lower-no-6)); }
+
+@keyframes window-flicker {
+    from {
+        opacity: 1;
+        box-shadow: 0 0 5px #e9e970;
+    }
+    to {
+        opacity: 0.6;
+        box-shadow: none;
+    }
+}
