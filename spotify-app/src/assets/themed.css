@@ -16,6 +16,7 @@
     --upper-no-6: #54052a;
     --lower-no-6: #8b5f6b;
 }
+
 .img-container {
     align-items: flex-end;
     justify-content: center;
@@ -23,6 +24,7 @@
     width: 100%;
 }
 .lofi {
+    overflow-y: scroll; /* fix this */
     color: var(--lofi-text);
     background: url('../img/dark-night-sky.jpg') no-repeat center / cover;
     overflow: hidden;

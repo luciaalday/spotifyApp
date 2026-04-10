@@ -37,8 +37,8 @@ export default function TopTracks() {
     return (
         <main>
             <div className="flex-row space-between">
-                <div>
-                    <h1>Top&nbsp;
+                <div className="flex-row time-range-options">
+                    <h1 style={{ margin: '0'}}>Top&nbsp;
                         <input
                             className='limit-input'
                             type="number"
@@ -49,11 +49,9 @@ export default function TopTracks() {
                         />
                         &nbsp;Tracks
                     </h1>
-                    <div className="flex-row time-range-options">
-                        <button onClick={() => setTimeRange("short_term")}>Last month</button>
-                        <button onClick={() => setTimeRange("medium_term")}>Last 6 months</button>
-                        <button onClick={() => setTimeRange("long_term")}>All time</button>
-                    </div>
+                    <button onClick={() => setTimeRange("short_term")}>Last month</button>
+                    <button onClick={() => setTimeRange("medium_term")}>Last 6 months</button>
+                    <button onClick={() => setTimeRange("long_term")}>All time</button>
                 </div>
                 <div>
                     <button onClick={handleDownload} className="icon play">
@@ -84,7 +82,7 @@ export default function TopTracks() {
                 </div>
             </div>
             */}
-                <div style={{ flex: '0 1 auto', margin: '0', padding:'0' }} ref={imgRef} >
+                <div style={{ margin: '0', padding:'0' }} ref={imgRef} >
                     <Spotilofi tracks={tracks} />
                 </div>
         </main>
