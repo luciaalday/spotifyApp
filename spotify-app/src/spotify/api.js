@@ -54,7 +54,7 @@ export async function setVolume(volumePercent) {
     });
 }
 
-// Tracks 
+// Tracks
 
 export async function getTopTracks(timeRange = "medium_term", limit = 20) {
     // timeRange: "short_term" (4 weeks) | "medium_term" (6 months) | "long_term" (all time)
@@ -94,7 +94,7 @@ export async function removeTrack(trackId) {
     });
 }
 
-// Artists 
+// Artists
 
 export async function getTopArtists(timeRange = "medium_term", limit = 20) {
     const res = await fetch(
