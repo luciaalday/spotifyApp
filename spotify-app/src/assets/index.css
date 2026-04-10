@@ -19,6 +19,9 @@ button:active {
     align-items: center;
     margin: 2px;
 }
+.space-between {
+    justify-content: space-between;
+}
 .flex-col {
     display: flex;
     align-items:center;
@@ -26,6 +29,9 @@ button:active {
 }
 .icon {
     background-color: transparent;
+}
+.icon:active {
+    transform: scale(0.9);
 }
 
 .App {
@@ -46,8 +52,8 @@ button:active {
     text-align: center;
 }
 @keyframes glow {
-    from { text-shadow: 0 0 0 var(--text-glow); }
-    to { text-shadow: 0 0 50px var(--text-glow); }
+    from { text-shadow: 0 0 0px var(--text-glow); }
+    to { text-shadow: 0 0 30px var(--text-glow); }
 }
 .text-glow {
     transition: 1s ease-out;

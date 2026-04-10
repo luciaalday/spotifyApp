@@ -1,27 +1,27 @@
 import { useState, useEffect } from 'react';
-import { getCurrentlyPlaying } from '../spotify/api';
+import { getCurrentlyPlaying, getPlaybackState, pausePlayback, resumePlayback, skipToNext, skipToPrevious } from '../spotify/api';
+import { FaPlay, FaPause, FaForwardStep, FaBackwardStep } from 'react-icons/fa6';
 
 export default function CurrentTrack() {
     const [currentTrack, setCurrentTrack] = useState(null);
+    const [play, setPlay] = useState(false);
 
     useEffect(() => {
         let intervalId;
-
-        const fetchTrack = async () => {
+        const fetchAll = async () => {
             try {
-                const data = await getCurrentlyPlaying();
-                if (data && data.item) {
-                    setCurrentTrack(data.item);
-                } else {
-                    setCurrentTrack(null);
-                }
+                const [trackData, stateData] = await Promise.all([
+                    getCurrentlyPlaying(),
+                    getPlaybackState()
+                ]);
+                setCurrentTrack(trackData?.item ?? null);
+                setPlay(stateData?.is_playing ?? false);
             } catch (err) {
-                console.error("Error fetching current track:", err);
+                console.error("Error polling Spotify:", err);
             }
         };
-        fetchTrack();
-        // Poll every 5 seconds
-        intervalId = setInterval(fetchTrack, 5000);
+        fetchAll();
+        intervalId = setInterval(fetchAll, 5000);
         return () => clearInterval(intervalId);
     }, []);
 
@@ -33,6 +33,13 @@ export default function CurrentTrack() {
             <h2>&emsp;</h2>
             <h1>{currentTrack.name}</h1>
             <h2>{currentTrack.artists.map(a => a.name).join(', ')}</h2>
+            <div className="flex-row play-controls">
+                <button className='icon play' onClick={()=>skipToPrevious()} ><FaBackwardStep size={20} /></button>
+                {play
+                    ? <button className='icon play' onClick={() => { setPlay(false); pausePlayback(); }}><FaPause size={20} /></button>
+                    : <button className='icon play' onClick={() => { setPlay(true); resumePlayback(); }}><FaPlay size={20} /></button>}
+                <button className='icon play' onClick={()=>skipToNext()} ><FaForwardStep size={20} /></button>
+            </div>
         </div>
     );
 }
