@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { getTopTracks } from '../spotify/api';
-import Spotilofi from '../components/spotilofi';
+import Spotilofi from '../components/Spotilofi';
 import html2canvas from 'html2canvas';
 import { IoDownload } from 'react-icons/io5';
 
