@@ -19,15 +19,14 @@ export default function App() {
                 <Nav isOpen={isOpen} setOpen={setOpen} />
                 <div className="container">
                     <Navside isOpen={isOpen} />
-                    <main className="main-content">
-                        <Routes>
-                            <Route path="/" element={<Login />} />
-                            <Route path="/top-tracks" element={<TopTracks />} />
-                            <Route path="/top-artists" element={<TopArtists />} />
-                            <Route path="*" element={<Error code={404} />} />
-                        </Routes>
-                        <Footer />
-                    </main>
+                    <Routes>
+                        <Route path="/" element={<Login />} />
+                        <Route path="/top-tracks" element={<TopTracks />} />
+                        <Route path="/top-artists" element={<TopArtists />} />
+                        <Route path="/callback" element={<Login />} />
+                        <Route path="*" element={<Error code={404} />} />
+                    </Routes>
+                    <Footer />
                 </div>
             </Router>
         </div>
