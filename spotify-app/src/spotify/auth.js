@@ -30,6 +30,7 @@ export async function generateCodeChallenge(verifier) {
 
 // Redirect user to Spotify auth page
 export async function loginWithSpotify() {
+    localStorage.clear();
     const verifier = generateCodeVerifier();
     const challenge = await generateCodeChallenge(verifier);
 
