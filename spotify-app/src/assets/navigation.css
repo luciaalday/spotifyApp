@@ -2,6 +2,7 @@
 
 button {
     transition: 0.2s ease;
+    background-color: #ffffff80;
 }
 
 .top-nav {
@@ -16,6 +17,7 @@ button {
     justify-content: space-between;
     padding: 0 20px;
     z-index: 1000;
+    box-shadow: 0 0 10px 5px var(--shadow);
 }
 
 .hamburger {
@@ -41,7 +43,8 @@ button {
     height: 100%;
     padding: 0;
     box-sizing: border-box;
-    box-shadow: 0 0 10px var(--shadow);
+    box-shadow: 0 0 10px var(--shadow), inset 0 0 25px var(--background-sidenav);
+    border: 2px solid var(--pistachio);
     overflow-y: scroll;
 }
 
@@ -84,17 +87,17 @@ main {
 }
 button.login {
     color: white;
-    border: 1px solid var(--shadow);
-    padding: 5px 20px;
+    padding: 15px 30px;
     border-radius: 50px;
-    background-color: var(--dark-green);
+    background-color: var(--button);
     margin-bottom: 10px;
 }
 
 button.login:hover {
-    background-color: var(--spotify-green);
-    transform: scale(1.05);
-    color: black
+    background-color: var(--button-hover);
+}
+button.login:active {
+    transform: scale(0.95);
 }
 
 @media (min-width: 768px) {

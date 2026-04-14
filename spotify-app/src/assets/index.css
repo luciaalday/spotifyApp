@@ -55,6 +55,11 @@ button:active {
     from { text-shadow: 0 0 0px var(--text-glow); }
     to { text-shadow: 0 0 30px var(--text-glow); }
 }
+.fade-out {
+    border-radius: 50px;
+    padding-left: 25px;
+    background: linear-gradient(to right, #afffb560, #ffffff00);
+}
 .text-glow {
     transition: 1s ease-out;
 }

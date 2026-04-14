@@ -1,20 +1,13 @@
 :root {
     --main-building: #204010;
     --lofi-text: #cbe970;
-    --upper-main: #1c3c11;
-    --lower-main: #566d56;
-    --upper-no-1: #0b4842;
-    --lower-no-1: #71a399;
-    --upper-no-2: #4f0b58;
-    --lower-no-2: #8a5884;
-    --upper-no-3: #9c4040;
-    --lower-no-3: #b07f7f;
-    --upper-no-4: #6b4007;
-    --lower-no-4: #8b7d5f;
-    --upper-no-5: #054254;
-    --lower-no-5: #5f818b;
-    --upper-no-6: #54052a;
-    --lower-no-6: #8b5f6b;
+    --upper-main: #1c1048; --lower-main: #5d60b7; --boxsh-main: #242667;
+    --upper-no-1: #0e645c; --lower-no-1: #4bc0b5; --boxsh-no-1: #305c53;
+    --upper-no-2: #501866; --lower-no-2: #b673ae; --boxsh-no-2: #52315c;
+    --upper-no-3: #0a5f74; --lower-no-3: #7abeeb; --boxsh-no-3: #6797a7;
+    --upper-no-4: #783577; --lower-no-4: #d27bc6; --boxsh-no-4: #8d4688;
+    --upper-no-5: #054254; --lower-no-5: #6c99a7; --boxsh-no-5: #1a627a;
+    --upper-no-6: #371f6d; --lower-no-6: #9a78ea; --boxsh-no-6: #502b6d;
 }
 
 .img-container {
@@ -34,16 +27,23 @@
 }
 
 .main-building {
-    margin: 15px 0 0 0;
+    margin: 15px 0 -5px 0;
     flex-shrink: 0;
-    padding: 10px;
+    padding: 15px;
     background: linear-gradient(var(--upper-main), var(--lower-main));
+    border: 2px solid var(--lower-main);
+    box-shadow: 0 0 5px 5px var(--boxsh-main);
+}
+.main-building h2 {
+    font-style: italic;
 }
 .side-building {
     width: 60px;
     flex-shrink: 0;
     margin: 0;
     padding: 10px;
+    margin-bottom: -5px;
+    border: 2px solid white;
 }
 .window {
     background-color: #edd3a6;
@@ -64,12 +64,12 @@ h3 {
     text-align: center;
     margin: 5px;
 }
-.no-1 { width: 50px; background: linear-gradient(var(--upper-no-1), var(--lower-no-1)); }
-.no-2 { width: 80px; background: linear-gradient(var(--upper-no-2), var(--lower-no-2)); }
-.no-3 { width: 70px; background: linear-gradient(var(--upper-no-3), var(--lower-no-3)); }
-.no-4 { width: 40px; background: linear-gradient(var(--upper-no-4), var(--lower-no-4)); }
-.no-5 { width: 100px; background: linear-gradient(var(--upper-no-5), var(--lower-no-5)); }
-.no-6 { width: 80px; background: linear-gradient(var(--upper-no-6), var(--lower-no-6)); }
+.no-1 { width: 50px; background: linear-gradient(var(--upper-no-1), var(--lower-no-1)); border-color: var(--lower-no-1); box-shadow: 0 0 5px 5px var(--boxsh-no-1) }
+.no-2 { width: 80px; background: linear-gradient(var(--upper-no-2), var(--lower-no-2)); border-color: var(--lower-no-2); box-shadow: 0 0 5px 5px var(--boxsh-no-2) }
+.no-3 { width: 70px; background: linear-gradient(var(--upper-no-3), var(--lower-no-3)); border-color: var(--lower-no-3); box-shadow: 0 0 5px 5px var(--boxsh-no-3) }
+.no-4 { width: 40px; background: linear-gradient(var(--upper-no-4), var(--lower-no-4)); border-color: var(--lower-no-4); box-shadow: 0 0 5px 5px var(--boxsh-no-4) }
+.no-5 { width: 99px; background: linear-gradient(var(--upper-no-5), var(--lower-no-5)); border-color: var(--lower-no-5); box-shadow: 0 0 5px 5px var(--boxsh-no-5) }
+.no-6 { width: 80px; background: linear-gradient(var(--upper-no-6), var(--lower-no-6)); border-color: var(--lower-no-6); box-shadow: 0 0 5px 5px var(--boxsh-no-6) }
 
 @keyframes window-flicker {
     from {

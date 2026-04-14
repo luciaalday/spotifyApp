@@ -39,7 +39,7 @@ export default function TopArtists() {
             <hr />
             <div>
                 {artists.map((artist, idx) => (
-                    <div key={artist.id} className="flex-row text-glow">
+                    <div key={artist.id} className="flex-row fade-out text-glow">
                         <h3 style={{ width: 30 }}> {idx + 1} </h3>
                         <img className='track-art' src={artist.images[0].url} alt="Artist Image" style={{ width: 60, height: 60 }} />
                         <div className='current-track'>
