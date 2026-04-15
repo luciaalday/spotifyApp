@@ -9,7 +9,7 @@ export default function Nav({ isOpen, setOpen }) {
                     <RxHamburgerMenu size={24} />
                 </button>
             </div>
-            <div className="flex-row">
+            <div className="flex-row center">
                 <h1>Spotify</h1>
                 <FaSpotify size={32} />
             </div>
