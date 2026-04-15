@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { getTopArtists } from '../spotify/api';
 import Basic from '../components/Basic';
-import Spotilofi from '../components/spotilofi';
+import Spotilofi from '../components/Spotilofi';
 import Prairie from '../components/Prarie';
 import html2canvas from 'html2canvas';
 import { IoDownload } from 'react-icons/io5';
