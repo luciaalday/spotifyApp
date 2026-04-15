@@ -1,10 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getTopArtists } from '../spotify/api';
+import Basic from '../components/Basic';
+import Spotilofi from '../components/spotilofi';
+import Prairie from '../components/Prarie';
+import html2canvas from 'html2canvas';
+import { IoDownload } from 'react-icons/io5';
 
 export default function TopArtists() {
     const [timeRange, setTimeRange] = useState("medium_term");
     const [limit, setLimit] = useState(20);
     const [artists, setArtists] = useState([]);
+    const [view, setView] = useState('Basic');
+
+    const imgref = useRef();
+
+    const handleDownload = async () => {
+        const canvas = await html2canvas(imgref.current, {allowTaint: true, useCORS: true});
+        const dataURL = canvas.toDataURL("image/png");
+        const link = document.createElement("a");
+        link.href = dataURL;
+        link.download = "top-tracks.png";
+        document.body.appendChild(link);
+        link.Click();
+    }
+
+    const viewComponents = {
+        Basic: <Basic artists={artists} />,
+        Lofi: <Spotilofi />,
+        Prairie: <Prairie />
+    }
 
     useEffect(() => {
         const fetchTopTracks = async () => {
@@ -20,33 +44,39 @@ export default function TopArtists() {
 
 
     return (
-        <main className='main-content'>
-            <h1>Top&nbsp;
-                <input className='limit-input'
-                    type="number"
-                    value={limit}
-                    onChange={(e) => setLimit(parseInt(e.target.value))}
-                    min="1"
-                    max="50"
-                />    
-                &nbsp;Artists
-            </h1>
-            <div className="flex-row  time-range-options">
-                <button onClick={()=>setTimeRange("short_term")} >Last month</button>
-                <button onClick={()=>setTimeRange("medium_term")} >Last 6 months</button>
-                <button onClick={()=>setTimeRange("long_term")} >All time</button>
+        <main>
+            <div className="flex-row space-between">
+                <div>
+                    <h1>Top&nbsp;
+                        <input className='limit-input'
+                            type="number"
+                            value={limit}
+                            onChange={(e) => setLimit(parseInt(e.target.value))}
+                            min="1"
+                            max="50"
+                            />    
+                        &nbsp;Artists
+                    </h1>
+                    <div className="flex-row  time-range-options">
+                        <button className="select" onClick={()=>setTimeRange("short_term")} >Last month</button>
+                        <button className="select" onClick={()=>setTimeRange("medium_term")} >Last 6 months</button>
+                        <button className="select" onClick={()=>setTimeRange("long_term")} >All time</button>
+                    </div>
+                </div>
+                <div className="flex-col align-between">
+                    <select className="select" value={view} onChange={(e) => setView(e.target.value)}>
+                        <option value="Basic">Default</option>
+                        <option value="Lofi">Spoti Lofi</option>
+                        <option value="Prairie">Little Spotify on the Prairie</option>
+                    </select>
+                    <button onClick={handleDownload} className="icon play">
+                        <IoDownload size={30} />
+                    </button>
+                </div>
             </div>
             <hr />
-            <div>
-                {artists.map((artist, idx) => (
-                    <div key={artist.id} className="flex-row fade-out text-glow">
-                        <h3 style={{ width: 30 }}> {idx + 1} </h3>
-                        <img className='track-art' src={artist.images[0].url} alt="Artist Image" style={{ width: 60, height: 60 }} />
-                        <div className='current-track'>
-                            <h1>{artist.name}</h1>
-                        </div>
-                    </div>
-                ))}
+            <div style={{margin:'0', padding:'0'}} ref={imgref}>
+                {viewComponents[view] ?? null}
             </div>
         </main>
     )

@@ -7,7 +7,7 @@ function randBetween(min, max, decimals = 1) {
 function generateWindows(count) {
     return Array.from({ length: count }, () => ({
         delay: randBetween(0.1, 5),
-        duration: randBetween(4, 10),
+        duration: randBetween(8, 15),
         timing: timingFns[Math.floor(Math.random() * timingFns.length)]
     }));
 }
@@ -45,34 +45,36 @@ export default function Spotilofi({ tracks }) {
     };
 
     return (
-        <div className='lofi'>
-            <div className='img-container'>
-                <div className='side-building no-1' style={{ height: `${heights[1]}px` }}>
-                    <Windows heightPx={heights[1]} />
-                </div>
-                <div className='side-building no-2' style={{ height: `${heights[2]}px` }}>
-                    <Windows heightPx={heights[2]} />
-                </div>
-                <div className='side-building no-3' style={{ height: `${heights[3]}px` }}>
-                    <Windows heightPx={heights[3]} />
-                </div>
-                <div className='main-building'>
-                    {tracks.map((track, idx) => (
-                        <div key={track.id} className="flex-row text-glow ranks">
-                            <h3 style={{ width: 30 }}>{idx + 1}</h3>
-                            <span>{track.name}</span>
-                            <span>{formatDuration(track.duration_ms)}</span>
-                        </div>
-                    ))}
-                </div>
-                <div className='side-building no-4' style={{ height: `${heights[4]}px` }}>
-                    <Windows heightPx={heights[4]} />
-                </div>
-                <div className='side-building no-5' style={{ height: `${heights[5]}px` }}>
-                    <Windows heightPx={heights[5]} />
-                </div>
-                <div className='side-building no-6' style={{ height: `${heights[6]}px` }}>
-                    <Windows heightPx={heights[6]} />
+        <div className='view-container'>
+            <div className='lofi'>
+                <div className='img-container'>
+                    <div className='side-building no-1' style={{ height: `${heights[1]}px` }}>
+                        <Windows heightPx={heights[1]} />
+                    </div>
+                    <div className='side-building no-2' style={{ height: `${heights[2]}px` }}>
+                        <Windows heightPx={heights[2]} />
+                    </div>
+                    <div className='side-building no-3' style={{ height: `${heights[3]}px` }}>
+                        <Windows heightPx={heights[3]} />
+                    </div>
+                    <div className='main-building'>
+                        {tracks.map((track, idx) => (
+                            <div key={track.id} className="flex-row text-glow ranks">
+                                <h3 style={{ width: 30 }}>{idx + 1}</h3>
+                                <span>{track.name}</span>
+                                <span>{formatDuration(track.duration_ms)}</span>
+                            </div>
+                        ))}
+                    </div>
+                    <div className='side-building no-4' style={{ height: `${heights[4]}px` }}>
+                        <Windows heightPx={heights[4]} />
+                    </div>
+                    <div className='side-building no-5' style={{ height: `${heights[5]}px` }}>
+                        <Windows heightPx={heights[5]} />
+                    </div>
+                    <div className='side-building no-6' style={{ height: `${heights[6]}px` }}>
+                        <Windows heightPx={heights[6]} />
+                    </div>
                 </div>
             </div>
         </div>

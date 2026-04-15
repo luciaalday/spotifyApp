@@ -4,6 +4,7 @@ import './assets/index.css';
 import './assets/navigation.css';
 import './assets/defaults.css';
 import './assets/themed.css';
+import './assets/prairie.css'
 import App from './App.jsx';
 
 createRoot(document.getElementById('root')).render(

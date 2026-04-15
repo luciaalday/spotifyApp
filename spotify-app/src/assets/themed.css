@@ -1,6 +1,6 @@
 :root {
     --main-building: #204010;
-    --lofi-text: #cbe970;
+    --lofi-text: #fbffb7;
     --upper-main: #1c1048; --lower-main: #5d60b7; --boxsh-main: #242667;
     --upper-no-1: #0e645c; --lower-no-1: #4bc0b5; --boxsh-no-1: #305c53;
     --upper-no-2: #501866; --lower-no-2: #b673ae; --boxsh-no-2: #52315c;
@@ -17,13 +17,9 @@
     width: 100%;
 }
 .lofi {
-    overflow-y: scroll; /* fix this */
     color: var(--lofi-text);
     background: url('../img/dark-night-sky.jpg') no-repeat center / cover;
     overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 0 15px var(--shadow);
-    border: 2px solid var(--lofi-text);
 }
 
 .main-building {

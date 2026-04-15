@@ -56,6 +56,9 @@ button {
 .side-nav-container.open {
     transform: translateX(0);
 }
+.open .side-nav {
+    background-color: #c3dccce8;
+}
 
 .container {
     margin-top: 60px;

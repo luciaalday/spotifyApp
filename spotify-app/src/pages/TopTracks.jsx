@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { getTopTracks } from '../spotify/api';
+import Basic from '../components/Basic';
 import Spotilofi from '../components/Spotilofi';
+import Prairie from '../components/Prarie';
 import html2canvas from 'html2canvas';
 import { IoDownload } from 'react-icons/io5';
 
@@ -8,6 +10,7 @@ export default function TopTracks() {
     const [timeRange, setTimeRange] = useState("medium_term");
     const [limit, setLimit] = useState(20);
     const [tracks, setTracks] = useState([]);
+    const [view, setView] = useState('Basic');
 
     const imgRef = useRef();
 
@@ -21,6 +24,11 @@ export default function TopTracks() {
         link.click();
     }
 
+    const viewComponents = {
+        Basic: <Basic tracks={tracks} />,
+        Lofi: <Spotilofi tracks={tracks} />,
+        Prairie: <Prairie />
+    }
 
     useEffect(() => {
         const fetchTopTracks = async () => {
@@ -37,10 +45,9 @@ export default function TopTracks() {
     return (
         <main>
             <div className="flex-row space-between">
-                <div className="flex-row time-range-options">
-                    <h1 style={{ margin: '0'}}>Top&nbsp;
-                        <input
-                            className='limit-input'
+                <div>
+                    <h1>Top&nbsp;
+                        <input className='limit-input'
                             type="number"
                             value={limit}
                             onChange={(e) => setLimit(parseInt(e.target.value))}
@@ -49,41 +56,26 @@ export default function TopTracks() {
                         />
                         &nbsp;Tracks
                     </h1>
-                    <button onClick={() => setTimeRange("short_term")}>Last month</button>
-                    <button onClick={() => setTimeRange("medium_term")}>Last 6 months</button>
-                    <button onClick={() => setTimeRange("long_term")}>All time</button>
+                    <div className="flex-row  time-range-options">
+                        <button className="select" onClick={() => setTimeRange("short_term")} >Last month</button>
+                        <button className="select" onClick={() => setTimeRange("medium_term")} >Last 6 months</button>
+                        <button className="select" onClick={() => setTimeRange("long_term")} >All time</button>
+                    </div>
                 </div>
-                <div>
+                <div className="flex-col align-between">
+                    <select className="select" value={view} onChange={(e) => setView(e.target.value)}>
+                        <option value="Basic">Default</option>
+                        <option value="Lofi">Spoti Lofi</option>
+                        <option value="Prairie">Little Spotify on the Prairie</option>
+                    </select>
                     <button onClick={handleDownload} className="icon play">
                         <IoDownload size={30} />
                     </button>
                 </div>
             </div>
             <hr />
-            {/**
-            <div className="flex-row space-between" style={{ alignItems: 'flex-start' }}>
-                <div style={{ flex: '0 1 auto', maxWidth: '45%' }}>
-                    <table>
-                        <tbody>
-                            {tracks.map((track, idx) => (
-                                <tr key={track.id}>
-                                    <td><h3 style={{ width: 30 }}>{idx + 1}</h3></td>
-                                    <td><img className='track-art' src={track.album.images[0].url} alt="Album Art" style={{ width: 60, height: 60 }} /></td>
-                                    <td>
-                                        <div className='current-track' style={{ margin: '0' }}>
-                                            <h1>{track.name}</h1>
-                                            <h2>{track.artists.map(a => a.name).join(', ')}</h2>
-                                        </div>
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            */}
                 <div style={{ margin: '0', padding:'0' }} ref={imgRef} >
-                    <Spotilofi tracks={tracks} />
+                    {viewComponents[view] ?? null}
                 </div>
         </main>
     );
