@@ -26,7 +26,7 @@ export default function TopArtists() {
 
     const viewComponents = {
         Basic: <Basic artists={artists} tracks={null} />,
-        Lofi: <Spotilofi />,
+        // Lofi: <Spotilofi />,
         Prairie: <Prairie />
     }
 
