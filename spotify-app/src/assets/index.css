@@ -64,8 +64,8 @@ button:active {
 }
 .fade-out {
     border-radius: 50px;
-    padding-left: 25px;
-    background: linear-gradient(to right, #afffb560, #ffffff00);
+    padding: 0 25px;
+    background: linear-gradient(to bottom right, #afffb560, #f5fff100);
 }
 .text-glow {
     transition: 1s ease-out;
@@ -90,4 +90,9 @@ select {
     border: 1px solid var(--pistachio);
     color: var(--black);
     border-radius: 10px;
+}
+.width-30 {
+    width: 30px;
+    min-width: 30px;
+    max-width: 30px;
 }

@@ -33,9 +33,8 @@ export default function Spotilofi({ tracks, artists }) {
         return `${mins}:${secs}`;
     };
 
-    if (!tracks.length && !artists.length) return null;
-
-    const len = tracks ? tracks.length : artists ? artists.length : 0;
+    const len = tracks?.length ?? artists?.length ?? 0;
+    if (!len) return null;
 
     const heights = {
         1: len * 8,
@@ -60,13 +59,13 @@ export default function Spotilofi({ tracks, artists }) {
                         <Windows heightPx={heights[3]} />
                     </div>
                     <div className='main-building'>
-                        {tracks ? tracks.map((track, idx) => (
+                        {tracks?.length ? tracks.map((track, idx) => (
                             <div key={track.id} className="flex-row text-glow ranks">
                                 <h3 style={{ width: 30 }}>{idx + 1}</h3>
                                 <span>{track.name}</span>
                                 <span>{formatDuration(track.duration_ms)}</span>
                             </div>
-                        )) : artists &&
+                        )) : artists?.length &&
                         artists.map((artist, idx) => (
                             <div key={artist.id} className="flex-row text-glow ranks">
                                 <h3 style={{ width: 30 }}>{idx+1}</h3>

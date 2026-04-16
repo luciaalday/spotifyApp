@@ -2,7 +2,7 @@
 
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background: linear-gradient(to top left, #121212, #14562a, #50a66d, #9ae3b6, #c2dccc);
+    background: linear-gradient(to top left, #14562a, #50a66d, #9ae3b6, #c2dccc);
 }
 
 :root {
@@ -12,7 +12,7 @@ html, body {
     --pistachio: #f5fff1;
     --dark-green: #22af51;
     --black: #121212;
-    --text-glow: #6ada3e;
+    --text-glow: #f5fff1;
     --button: #415644;
     --button-hover: #27482c;
 }

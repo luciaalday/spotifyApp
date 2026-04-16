@@ -9,8 +9,8 @@ const SCOPES = [
     "user-modify-playback-state",
     "user-read-recently-played"
 ].join(" ");
-const REDIRECT_URI = 'https://spotify.luciaalday.com/callback'; // production redirect
-// const REDIRECT_URI = "http://127.0.0.1:5173/callback"; // developer redirect
+// const REDIRECT_URI = 'https://spotify.luciaalday.com/callback'; // production redirect
+const REDIRECT_URI = "http://127.0.0.1:5173/callback"; // developer redirect
 const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&scope=${SCOPES}`;
 
 // Generate random string for PKCE code verifier
