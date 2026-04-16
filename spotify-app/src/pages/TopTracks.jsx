@@ -74,9 +74,11 @@ export default function TopTracks() {
                 </div>
             </div>
             <hr />
+            <div className='view-container'>
                 <div style={{ margin: '0', padding:'0' }} ref={imgRef} >
                     {viewComponents[view] ?? null}
                 </div>
+            </div>
         </main>
     );
 }

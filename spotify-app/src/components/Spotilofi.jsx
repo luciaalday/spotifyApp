@@ -46,42 +46,40 @@ export default function Spotilofi({ tracks, artists }) {
     };
 
     return (
-        <div className='view-container'>
-            <div className='lofi'>
-                <div className='img-container'>
-                    <div className='side-building no-1' style={{ height: `${heights[1]}px` }}>
-                        <Windows heightPx={heights[1]} />
-                    </div>
-                    <div className='side-building no-2' style={{ height: `${heights[2]}px` }}>
-                        <Windows heightPx={heights[2]} />
-                    </div>
-                    <div className='side-building no-3' style={{ height: `${heights[3]}px` }}>
-                        <Windows heightPx={heights[3]} />
-                    </div>
-                    <div className='main-building'>
-                        {tracks?.length ? tracks.map((track, idx) => (
-                            <div key={track.id} className="flex-row text-glow ranks">
-                                <h3 style={{ width: 30 }}>{idx + 1}</h3>
-                                <span>{track.name}</span>
-                                <span>{formatDuration(track.duration_ms)}</span>
-                            </div>
-                        )) : artists?.length &&
-                        artists.map((artist, idx) => (
-                            <div key={artist.id} className="flex-row text-glow ranks">
-                                <h3 style={{ width: 30 }}>{idx+1}</h3>
-                                <span>{artist.name}</span>
-                            </div>
-                        ))}
-                    </div>
-                    <div className='side-building no-4' style={{ height: `${heights[4]}px` }}>
-                        <Windows heightPx={heights[4]} />
-                    </div>
-                    <div className='side-building no-5' style={{ height: `${heights[5]}px` }}>
-                        <Windows heightPx={heights[5]} />
-                    </div>
-                    <div className='side-building no-6' style={{ height: `${heights[6]}px` }}>
-                        <Windows heightPx={heights[6]} />
-                    </div>
+        <div className='lofi'>
+            <div className='img-container'>
+                <div className='side-building no-1' style={{ height: `${heights[1]}px` }}>
+                    <Windows heightPx={heights[1]} />
+                </div>
+                <div className='side-building no-2' style={{ height: `${heights[2]}px` }}>
+                    <Windows heightPx={heights[2]} />
+                </div>
+                <div className='side-building no-3' style={{ height: `${heights[3]}px` }}>
+                    <Windows heightPx={heights[3]} />
+                </div>
+                <div className='main-building'>
+                    {tracks?.length ? tracks.map((track, idx) => (
+                        <div key={track.id} className="flex-row text-glow ranks">
+                            <h3 style={{ width: 30 }}>{idx + 1}</h3>
+                            <span>{track.name}</span>
+                            <span>{formatDuration(track.duration_ms)}</span>
+                        </div>
+                    )) : artists?.length &&
+                    artists.map((artist, idx) => (
+                        <div key={artist.id} className="flex-row text-glow ranks">
+                            <h3 style={{ width: 30 }}>{idx+1}</h3>
+                            <span>{artist.name}</span>
+                        </div>
+                    ))}
+                </div>
+                <div className='side-building no-4' style={{ height: `${heights[4]}px` }}>
+                    <Windows heightPx={heights[4]} />
+                </div>
+                <div className='side-building no-5' style={{ height: `${heights[5]}px` }}>
+                    <Windows heightPx={heights[5]} />
+                </div>
+                <div className='side-building no-6' style={{ height: `${heights[6]}px` }}>
+                    <Windows heightPx={heights[6]} />
                 </div>
             </div>
         </div>
