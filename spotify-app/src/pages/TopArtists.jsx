@@ -26,7 +26,7 @@ export default function TopArtists() {
 
     const viewComponents = {
         Basic: <Basic artists={artists} tracks={null} />,
-        // Lofi: <Spotilofi />,
+        Lofi: <Spotilofi artists={artists} tracks={null} />,
         Prairie: <Prairie />
     }
 
@@ -54,7 +54,7 @@ export default function TopArtists() {
                             onChange={(e) => setLimit(parseInt(e.target.value))}
                             min="1"
                             max="50"
-                            />    
+                            />
                         &nbsp;Artists
                     </h1>
                     <div className="flex-row  time-range-options">

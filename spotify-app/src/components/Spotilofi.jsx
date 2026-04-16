@@ -26,22 +26,24 @@ function Windows({ heightPx }) {
     ));
 }
 
-export default function Spotilofi({ tracks }) {
+export default function Spotilofi({ tracks, artists }) {
     const formatDuration = (ms) => {
         const mins = Math.floor(ms / 60000);
         const secs = Math.floor((ms % 60000) / 1000).toString().padStart(2, '0');
         return `${mins}:${secs}`;
     };
 
-    if (!tracks.length) return null;
+    if (!tracks.length && !artists.length) return null;
+
+    const len = tracks ? tracks.length : artists ? artists.length : 0;
 
     const heights = {
-        1: tracks.length * 8,
-        2: tracks.length * 21,
-        3: tracks.length * 12,
-        4: tracks.length * 10,
-        5: tracks.length * 18,
-        6: tracks.length * 6,
+        1: len * 8,
+        2: len * 21,
+        3: len * 12,
+        4: len * 10,
+        5: len * 18,
+        6: len * 6,
     };
 
     return (
@@ -58,11 +60,17 @@ export default function Spotilofi({ tracks }) {
                         <Windows heightPx={heights[3]} />
                     </div>
                     <div className='main-building'>
-                        {tracks.map((track, idx) => (
+                        {tracks ? tracks.map((track, idx) => (
                             <div key={track.id} className="flex-row text-glow ranks">
                                 <h3 style={{ width: 30 }}>{idx + 1}</h3>
                                 <span>{track.name}</span>
                                 <span>{formatDuration(track.duration_ms)}</span>
+                            </div>
+                        )) : artists &&
+                        artists.map((artist, idx) => (
+                            <div key={artist.id} className="flex-row text-glow ranks">
+                                <h3 style={{ width: 30 }}>{idx+1}</h3>
+                                <span>{artist.name}</span>
                             </div>
                         ))}
                     </div>
