@@ -33,6 +33,13 @@ export default function Spotilofi({ tracks, artists }) {
         return `${mins}:${secs}`;
     };
 
+    const toPascalCase = (str) => {
+        return str
+            .split(/[\s]+/)
+            .map(word => word.charAt(0) + word.slice(1).toLowerCase())
+            .join(' ');
+    };
+
     const len = tracks?.length ?? artists?.length ?? 0;
     if (!len) return null;
 
@@ -61,14 +68,14 @@ export default function Spotilofi({ tracks, artists }) {
                     {tracks?.length ? tracks.map((track, idx) => (
                         <div key={track.id} className="flex-row text-glow ranks">
                             <h3 style={{ width: 30 }}>{idx + 1}</h3>
-                            <span>{track.name}</span>
+                            <span>{toPascalCase(track.name)}</span>
                             <span>{formatDuration(track.duration_ms)}</span>
                         </div>
                     )) : artists?.length &&
                     artists.map((artist, idx) => (
                         <div key={artist.id} className="flex-row text-glow ranks">
                             <h3 style={{ width: 30 }}>{idx+1}</h3>
-                            <span>{artist.name}</span>
+                            <span>{toPascalCase(artist.name)}</span>
                         </div>
                     ))}
                 </div>

@@ -75,8 +75,10 @@ export default function TopArtists() {
                 </div>
             </div>
             <hr />
-            <div style={{margin:'0', padding:'0'}} ref={imgref}>
-                {viewComponents[view] ?? null}
+            <div className='view-container'>
+                <div style={{margin:'0', padding:'0'}} ref={imgref}>
+                    {viewComponents[view] ?? null}
+                </div>
             </div>
         </main>
     )

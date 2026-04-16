@@ -1,4 +1,11 @@
 export default function Basic({ tracks, artists }) {
+    const toPascalCase = (str) => {
+        return str
+            .split(/[\s]+/)
+            .map(word => word.charAt(0) + word.slice(1).toLowerCase())
+            .join(' ');
+    };
+
     return (
         <div className="flex-row space-between" style={{ alignItems: 'flex-start' }}>
             <div style={{ flex: '0 1 auto' }}>
@@ -7,8 +14,8 @@ export default function Basic({ tracks, artists }) {
                         <h3 className='width-30'> {idx + 1} </h3>
                         <img className='track-art' src={track.album.images[0].url} alt="Album Art" style={{ width: 60, height: 60 }} />
                         <div className='current-track' style={{margin:'0'}}>
-                            <h1>{track.name}</h1>
-                            <h2>{track.artists.map(a => a.name).join(', ')}</h2>
+                            <h1>{toPascalCase(track.name)}</h1>
+                            <h2>{track.artists.map(a => toPascalCase(a.name)).join(', ')}</h2>
                         </div>
                     </div>
                 ))}
@@ -17,7 +24,7 @@ export default function Basic({ tracks, artists }) {
                         <h3 className='width-30' > {idx + 1} </h3>
                         <img className='track-art' src={artist.images[0].url} alt="Artist Image" style={{ width: 60, height: 60 }} />
                         <div className='current-track' style={{margin:'0'}}>
-                            <h1>{artist.name}</h1>
+                            <h1>{toPascalCase(artist.name)}</h1>
                         </div>
                     </div>
                 ))}
